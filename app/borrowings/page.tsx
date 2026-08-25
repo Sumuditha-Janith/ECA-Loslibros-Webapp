@@ -49,7 +49,7 @@ export default function BorrowingsPage() {
     return (
         <div>
             <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-                <h1 className="text-2xl font-bold">Borrowings</h1>
+                <h1 className="text-2xl font-bold text-[#1A120B]">Borrowings</h1>
                 <div className="flex gap-2">
                     <SearchBar value={search} onChange={setSearch} placeholder="Search borrowings..." />
                     <Link href="/borrowings/new" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5 rounded text-sm transition">
@@ -61,11 +61,11 @@ export default function BorrowingsPage() {
                 {filtered.map(b => {
                     const book = books[b.bookIsbn];
                     return (
-                        <div key={b.borrowingId} className="bg-white border border-gray-200 rounded p-4 flex flex-wrap items-center justify-between shadow-sm">
+                        <div key={b.borrowingId} className="bg-[#D5CEA3] border border-[#3C2A21] rounded p-4 flex flex-wrap items-center justify-between shadow-sm">
                             <div>
-                                <p className="font-semibold">{book ? book.title : b.bookIsbn}</p>
-                                <p className="text-gray-600 text-sm">Member: {b.memberId}</p>
-                                <p className="text-gray-600 text-sm">Borrowed: {b.borrowDate} · Due: {b.dueDate}</p>
+                                <p className="font-semibold text-[#1A120B]">{book ? book.title : b.bookIsbn}</p>
+                                <p className="text-[#3C2A21] text-sm">Member: {b.memberId}</p>
+                                <p className="text-[#3C2A21] text-sm">Borrowed: {b.borrowDate} · Due: {b.dueDate}</p>
                                 <p className="text-sm">
                   <span className={`inline-block px-2 py-0.5 rounded text-xs font-medium ${
                       b.status === 'BORROWED' ? 'bg-yellow-100 text-yellow-800' : 'bg-green-100 text-green-800'
@@ -81,7 +81,7 @@ export default function BorrowingsPage() {
                         </div>
                     );
                 })}
-                {filtered.length === 0 && <p className="text-gray-500">No borrowings found.</p>}
+                {filtered.length === 0 && <p className="text-[#3C2A21]">No borrowings found.</p>}
             </div>
         </div>
     );

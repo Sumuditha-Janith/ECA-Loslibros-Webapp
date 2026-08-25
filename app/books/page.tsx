@@ -41,12 +41,12 @@ export default function BooksPage() {
         }
     };
 
-    if (loading) return <div className="py-8 text-center">Loading...</div>;
+    if (loading) return <div className="py-8 text-center text-[#3C2A21]">Loading...</div>;
 
     return (
         <div>
             <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-                <h1 className="text-2xl font-bold">Books</h1>
+                <h1 className="text-2xl font-bold text-[#1A120B]">Books</h1>
                 <div className="flex gap-2">
                     <SearchBar value={search} onChange={setSearch} placeholder="Search books..." />
                     <Link href="/books/new" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5 rounded text-sm transition">
@@ -56,11 +56,11 @@ export default function BooksPage() {
             </div>
             <div className="grid gap-3">
                 {filtered.map(book => (
-                    <div key={book.isbn} className="bg-white border border-gray-200 rounded p-4 flex flex-wrap items-center justify-between shadow-sm">
+                    <div key={book.isbn} className="bg-[#D5CEA3] border border-[#3C2A21] rounded p-4 flex flex-wrap items-center justify-between shadow-sm">
                         <div>
-                            <h2 className="text-lg font-semibold">{book.title}</h2>
-                            <p className="text-gray-600 text-sm">by {book.author} · ISBN: {book.isbn}</p>
-                            <Link href={`/books/${book.isbn}`} className="text-blue-600 text-sm hover:underline">View Details</Link>
+                            <h2 className="text-lg font-semibold text-[#1A120B]">{book.title}</h2>
+                            <p className="text-[#3C2A21] text-sm">by {book.author} · ISBN: {book.isbn}</p>
+                            <Link href={`/books/${book.isbn}`} className="text-[#1A120B] text-sm underline hover:no-underline">View Details</Link>
                         </div>
                         <div className="flex gap-2 mt-2 sm:mt-0">
                             <Link href={`/books/${book.isbn}/edit`} className="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded text-sm transition">Edit</Link>
@@ -68,7 +68,7 @@ export default function BooksPage() {
                         </div>
                     </div>
                 ))}
-                {filtered.length === 0 && <p className="text-gray-500">No books found.</p>}
+                {filtered.length === 0 && <p className="text-[#3C2A21]">No books found.</p>}
             </div>
         </div>
     );
