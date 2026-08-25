@@ -8,21 +8,27 @@ import { Borrowing } from '@/lib/types';
 export default function EditBorrowingPage() {
     const { id } = useParams();
     const router = useRouter();
-    const [data, setData] = useState<Borrowing | null>(null);
+    const [initialData, setInitialData] = useState<Borrowing | null>(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        api.get(`/api/v1/borrowings/${id}`).then(res => setData(res.data));
+        api.get(`/api/v1/borrowings/${id}`)
+            .then(res => setInitialData(res.data))
+            .catch(err => alert('Borrowing not found'))
+            .finally(() => setLoading(false));
     }, [id]);
 
-    const handleSubmit = async (formData: any) => {
+    const handleSubmit = async (data: any) => {
         try {
-            await api.put(`/api/v1/borrowings/${id}`, formData);
+            await api.put(`/api/v1/borrowings/${id}`, data);
             router.push('/borrowings');
-        } catch {
+        } catch (err) {
             alert('Update failed');
         }
     };
 
-    if (!data) return <div>Loading...</div>;
-    return <BorrowingForm initialData={data} onSubmit={handleSubmit} isEdit />;
+    if (loading) return <div className="py-8 text-center">Loading...</div>;
+    if (!initialData) return <div className="py-8 text-center">Borrowing not found</div>;
+
+    return <BorrowingForm initialData={initialData} onSubmit={handleSubmit} isEdit />;
 }
