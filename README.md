@@ -110,3 +110,13 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 npm run build
 npm start
 ```
+
+---
+
+## 👤 Student Information
+
+- **Student Name:** E. Sumuditha Janith
+- **Student Number:** 241711016
+- **GCP Project ID:** eca-gdse-71-loslibros
+- **Slack Handle:** https://ijse-eca-hdse-71-72.slack.com/team/U0BF55V8V0W
+
